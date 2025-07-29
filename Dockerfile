@@ -9,6 +9,7 @@ WORKDIR /app
 RUN apk add --no-cache libc6-compat curl bash
 RUN apk update
 COPY . .
+RUN apt-get update && apt-get install -y python3 make g++ && ln -s /usr/bin/python3 /usr/bin/python
 
 RUN corepack enable pnpm && pnpm install --recursive --frozen-lockfile
 
